@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Causa;
+use \App\Tipo;
 
-class HomeController extends Controller
+class MantenimientoController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('mantenimiento');
+    }
+
+    public function crearOrden(){
+        $causas = Causa::all();
+        $tipos = Tipo::all();
+        return view('mantenimiento.crear_orden')->with([
+            'causas' => $causas,
+            'tipos' => $tipos
+        ]);
     }
 }

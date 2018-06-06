@@ -19,6 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/mantenimiento', 'MantenimientoController@index')->name('mantenimiento');
     Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('/crear-orden', 'MantenimientoController@crearOrden')->name('crear-orden');
+    Route::get('/imprimir-orden', 'AdminController@imprimirOrden')->name('imprimir-orden');
 });

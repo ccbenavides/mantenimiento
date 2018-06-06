@@ -16,9 +16,27 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+
+    <style>
+    @media print {
+        .no-print{
+            display: none;
+        }
+
+        .card-body, body{
+            padding: 0;
+            margin:0;
+        }
+        .card{
+            border: 0;
+        }
+    }   
+    </style>
+    @yield('extra-css')
 </head>
 <body>
     <div id="app">
