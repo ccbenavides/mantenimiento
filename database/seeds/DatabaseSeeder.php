@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use \App\User;
 use \App\Tipo;
 use \App\Causa;
+use \App\Tienda;
 
 class DatabaseSeeder extends Seeder
 {
@@ -72,5 +73,24 @@ class DatabaseSeeder extends Seeder
                 'description' => $tipo,
             ]);
         }
+
+        $tiendas = [
+            'OVALO',
+            'SALAVERRY',
+            'LARCOMAR',
+            'SAN MIGUEL',
+            'RAMBLA',
+            'JOCKEY',
+            'PRIMAVERA'
+        ];
+        
+        foreach ($tiendas as $tienda) {
+            Tienda::create([  'name' => $tienda ]);
+        }
+
+        factory(App\Orden::class, 250)->create()->each(function ($u) {
+            $u->tipos()->sync([random_int(1,14),random_int(1,14),random_int(1,14),random_int(1,14)]);
+            $u->causas()->sync([random_int(1,9),random_int(1,9),random_int(1,9),random_int(1,9)]);
+         });
     }
 }

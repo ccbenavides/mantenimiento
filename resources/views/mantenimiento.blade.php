@@ -23,45 +23,31 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>
-                                    Descripción
-                                </th>
+                                <th>Orden Número</th>
                                 <th>Fecha</th>
+                                <th>Hora Inicio</th>
+                                <th>Hora Termino</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($ordenes as $orden)
                             <tr>
-                                <td>orden registrada número 1 </td>
-                                <td> 2018/05/03 20:30 </td>
+                                <td>#{{ $orden->numero_orden }} </td>
+                                <td>{{ $orden->fecha  }}</td>
+                                <td>{{ $orden->hora_inicio }}</td>
+                                <td>{{ $orden->hora_termino }}</td>
                                 <td>
-                                    <span>en tramite</span>
+                                    <span>{{ $orden->estado }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ url('/crear-orden') }}">Continuar</a>
+                                    <a href="{{ url('/orden/'. $orden->id ) }}">{{ $orden->estado == "completado" ? 'Ver' : 'Continuar' }} </a>
                                 </td>
+
                             </tr>
-                            <tr>
-                                <td>orden registrada número 1 </td>
-                                <td> 2018/05/03 20:30 </td>
-                                <td>
-                                    <span>Finalizado</span>
-                                </td>
-                                <td>
-                                    <a href="{{ url('/crear-orden') }}">ver</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>orden registrada número 1 </td>
-                                <td> 2018/05/03 20:30 </td>
-                                <td>
-                                    <span>Finalizado</span>
-                                </td>
-                                <td>
-                                    <a href="{{ url('/crear-orden') }}">ver</a>
-                                </td>
-                            </tr>
+                            @endforeach 
+
                         </tbody>
                     </table>
                 </div>
